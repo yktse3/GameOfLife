@@ -32,4 +32,8 @@ export default class Coordinate {
   addNeighbor(coordinate) {
     this.neighbors.push(coordinate);
   }
+
+  neighborCount() {
+    return this.neighbors.length;
+  }
 }
