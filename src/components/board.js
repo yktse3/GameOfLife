@@ -15,8 +15,8 @@ export default class Board {
 
   buildCoordinate(numberOfcolumn, numberOfrow) {
     this.coordinates = [];
-    for (let i = 0; i < numberOfcolumn; i += 1) {
-      for (let j = 0; j < numberOfrow; j += 1) {
+    for (let i = 1; i <= numberOfcolumn; i += 1) {
+      for (let j = 1; j <= numberOfrow; j += 1) {
         this.coordinates.push(new Coordinate(i, j));
       }
     }
