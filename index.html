@@ -44,7 +44,7 @@
       for (var j = 1; j <= x; j++) {
         var node = document.createElement('span');
         var className = 'square square-' + j + '-' + i;
-        if (j%2) {
+        if (board.getCoordinateAt(j, i).isAlive()) {
           className += ' active';
         }
         node.className = className;

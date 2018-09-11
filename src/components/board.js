@@ -33,4 +33,14 @@ export default class Board {
       return true;
     });
   }
+
+  getCoordinateAt(x, y) {
+    const expectedCoordinate = new Coordinate(x, y);
+    const foundCoordinate = this.coordinates
+      .filter(coordinate => coordinate.equal(expectedCoordinate));
+    if (foundCoordinate.length === 0) {
+      return foundCoordinate[0];
+    }
+    return null;
+  }
 }

@@ -36,4 +36,12 @@ export default class Coordinate {
   neighborCount() {
     return this.neighbors.length;
   }
+
+  equal(coordinate) {
+    return this.x === coordinate.x && this.y === coordinate.y;
+  }
+
+  isAlive() {
+    return this.cell.isActive();
+  }
 }
