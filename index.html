@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Game of life</title>
+
+  <style>
+    #gameOfLife {
+      border: 1px solid red;
+      margin: 0 auto;
+    }
+    .square {
+      float: left;
+      height: 20px;
+      width: 20px;
+      border: 1px solid black;
+    }
+    .square.active {
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<div id="gameOfLife"></div>
+
+<script src="./dist/main.js"></script>
+<script>
+  // Very simple vanilla JavaScript implementation
+  var x = 10,
+    y = 15,
+    board = document.getElementById('gameOfLife'),
+    world = new GameOfLife(x, y);
+
+  board.style.height = (y * 20 + y * 2) + 'px';
+  board.style.width = (x * 20 + x * 2) + 'px';
+
+  function renderWorld() {
+    while (child = board.firstChild) {
+      board.removeChild(child);
+    }
+
+    for (var i = 1; i <= y; i++) {
+      for (var j = 1; j <= x; j++) {
+        var node = document.createElement('span');
+        var className = 'square square-' + j + '-' + i;
+        if (j%2) {
+          className += ' active';
+        }
+        node.className = className;
+        board.appendChild(node);
+      }
+    }
+  }
+  renderWorld();
+</script>
+</body>
+</html>
