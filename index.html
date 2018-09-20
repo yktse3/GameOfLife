@@ -6,7 +6,7 @@
 
   <style>
     #gameOfLife {
-      border: 1px solid red;
+      border: 1px solid black;
       margin: 0 auto;
     }
     .square {
@@ -16,7 +16,7 @@
       border: 1px solid black;
     }
     .square.active {
-      background-color: #000;
+      background-color: black;
     }
   </style>
 </head>
@@ -35,6 +35,10 @@
   board.style.height = (y * 20 + y * 2) + 'px';
   board.style.width = (x * 20 + x * 2) + 'px';
 
+  function onClick() {
+    alert('clicked');
+  }
+
   function renderWorld() {
     while (child = board.firstChild) {
       board.removeChild(child);
@@ -44,10 +48,12 @@
       for (var j = 1; j <= x; j++) {
         var node = document.createElement('span');
         var className = 'square square-' + j + '-' + i;
-        if (board.getCoordinateAt(j, i).isAlive()) {
+        console.log(world.getCoordinateAt(j, i));
+        if (world.getCoordinateAt(j, i).isAlive()) {
           className += ' active';
         }
         node.className = className;
+        node.addEventListener("click", onClick);
         board.appendChild(node);
       }
     }

@@ -37,8 +37,10 @@ export default class Board {
   getCoordinateAt(x, y) {
     const expectedCoordinate = new Coordinate(x, y);
     const foundCoordinate = this.coordinates
-      .filter(coordinate => coordinate.equal(expectedCoordinate));
-    if (foundCoordinate.length === 0) {
+      .filter(coordinate => {
+        return coordinate.equal(expectedCoordinate)
+      });
+    if (foundCoordinate.length === 1) {
       return foundCoordinate[0];
     }
     return null;

@@ -8,7 +8,7 @@ export default class Coordinate {
     }
     this.x = x;
     this.y = y;
-    this.square = null;
+    this.square = new DeadSquare();
     this.neighbors = [];
   }
 
@@ -42,6 +42,6 @@ export default class Coordinate {
   }
 
   isAlive() {
-    return this.cell.isActive();
+    return this.square.isAlive();
   }
 }
