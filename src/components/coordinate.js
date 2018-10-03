@@ -44,4 +44,23 @@ export default class Coordinate {
   isAlive() {
     return this.square.isAlive();
   }
+
+  changeState() {
+    let numberOfLiveNeighbors = this.neighbors.reduce((count, coordinate) => {
+      if (coordinate.isAlive()) {
+        return count++;
+      }
+      return count;
+    }, 0);
+
+    return this.square.changeState(numberOfLiveNeighbors);
+  }
+
+  nextState () {
+    if (this.isAlive()) {
+      this.square = new DeadSquare();
+    } else {
+      this.square = new LiveSquare();
+    }
+  }
 }

@@ -45,4 +45,18 @@ export default class Board {
     }
     return null;
   }
+
+  frame() {
+    let callbacks = [];
+
+    this.coordinates.forEach(coordinate => {
+      if (coordinate.changeState()) {
+        callbacks.push(function() {
+          coordinate.nextState();
+        });
+      }
+    });
+
+    callbacks.forEach(callback => callback());
+  }
 }
