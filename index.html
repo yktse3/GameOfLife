@@ -43,8 +43,10 @@
   board.style.height = (y * 20 + y * 2) + 'px';
   board.style.width = (x * 20 + x * 2) + 'px';
 
-  function onClick() {
-    alert('clicked');
+  function setOnclick(node, j, i) {
+    node.addEventListener("click", function() {
+      world.getCoordinateAt(j, i).click()
+    });
   }
 
   function renderWorld() {
@@ -61,7 +63,7 @@
           className += ' active';
         }
         node.className = className;
-        node.addEventListener("click", onClick);
+        setOnclick(node, j, i);
         board.appendChild(node);
       }
     }
